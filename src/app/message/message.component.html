@@ -1,0 +1,45 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><img src = "assets/logo.jpg" style="height:50px"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li [routerLinkActive]="['active']" class="nav-item">
+          <a class="nav-link" [routerLink]="['/admin']">Orders</a>
+        </li>
+        <li [routerLinkActive]="['active']" class="nav-item">
+          <a class="nav-link" [routerLink]="['/addEmp']">Add Employee</a>
+        </li>
+        <li [routerLinkActive]="['active']" class="nav-item">
+          <a class="nav-link" [routerLink]="['/employees']">Employees</a>
+        </li>
+        <li [routerLinkActive]="['active']" class="nav-item">
+          <a class="nav-link" [routerLink]="['/message']">Messages</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<main class="team-section text-center my-5">
+  <h2 class="h1-responsive font-weight-bold my-5" *ngIf="messages.length > 0">All Messages</h2>
+  <h2 class="h1-responsive font-weight-bold my-5" *ngIf="messages.length === 0">No Messages</h2>
+
+  <mat-accordion multi="true" *ngIf="messages.length > 0">
+    <mat-expansion-panel *ngFor="let message of messages">
+      <mat-expansion-panel-header>
+          {{message.name}} - {{message.subject}}
+      </mat-expansion-panel-header>
+      <p>Name     : {{message.name}}</p>
+      <p>Email    : {{message.email}}</p>
+      <p>Sub      : {{message.subject}}</p>
+      <p>Message  : {{message.message}}</p>
+    </mat-expansion-panel>
+    </mat-accordion>
+
+
+</main>
